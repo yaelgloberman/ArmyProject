@@ -1,0 +1,35 @@
+﻿@model ArmyExe2.Models.Response
+@{
+    ViewData["Title"] = "GetAllCoronaDetailsHC";
+}
+
+<h1>Corona Vaccine details</h1>
+
+@if (Model.listCoronaDetails == null || Model.listCoronaDetails.Count == 0)
+{
+    <p>No corona details found.</p>
+}
+else
+{
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Corona Vaccine</th>
+                <th scope="col">Corona Manufacturer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var coronaDetail in Model.listCoronaDetails)
+            {
+                <tr>
+                    <th scope="row">@coronaDetail.Id</th>
+                    <td>@coronaDetail.CoronaVaccine</td>
+                    <td>@coronaDetail.CoronaManufacturer</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}

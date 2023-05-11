@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ArmyExe2.props" />
+</Project>

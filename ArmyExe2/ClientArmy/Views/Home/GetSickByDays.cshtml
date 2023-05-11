@@ -1,0 +1,51 @@
+﻿@model ArmyExe2.Models.Response
+@using Newtonsoft.Json;
+
+@{
+    ViewData["Title"] = "Graph of positive pepole by dates";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Line Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Graph of positive pepole by dates</h1>
+    <canvas id="myChart"></canvas>
+    <script>
+          
+
+        var daysSick = @JsonConvert.SerializeObject(Model.daysSick);
+        var dataPoints = [];
+        console.log(daysSick.length);
+        for (var i = 0; i < daysSick.length; i++) {
+            dataPoints.push({
+                x: i + 1, // x-axis value is the day of the month
+                y: daysSick[i] // y-axis value is the number of sick days
+            });
+        }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from(Array(30), (_, i) => (i + 1).toString()), // array of labels for the x-axis ticks
+                datasets: [{
+                    label: 'Sick Days',
+                    data: dataPoints
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        type: 'category', // x-axis scale type is set to 'category'
+                        position: 'bottom'
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+</html>

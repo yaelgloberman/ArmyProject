@@ -1,0 +1,25 @@
+﻿<head>
+    <link rel="stylesheet" href="path/to/your/css/file.css">
+    <style>
+        .blue-link {
+            color: white;
+        }
+    </style>
+</head>
+
+<div class="container text-center">
+
+    <button type="button" class="btn btn-outline-primary" style="margin-bottom:25px">
+        @Html.ActionLink("Users table", "GetAllUsersHC", null, new { @class = "blue-link" })
+    </button>
+    <button type="button" class="btn btn-outline-primary" style="margin-bottom:25px">
+        @Html.ActionLink("Corona vaccsine table ", "GetAllCoronaDetailsHC", null, new { @class = "blue-link" })
+    </button>
+
+    <button type="button" class="btn btn-outline-primary" style="margin-bottom:25px">
+        @Html.ActionLink("Graph of positive corona", "GetSickByDays", null, new { @class = "blue-link" })
+    </button>
+    <button type="button" class="btn btn-outline-primary" style="margin-bottom:25px">
+        @Html.ActionLink("Number of people not vaccinated", "GetNotVaccinatedCount", null, new { @class = "blue-link" })
+    </button>
+</div>

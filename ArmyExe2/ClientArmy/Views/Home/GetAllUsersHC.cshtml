@@ -1,0 +1,47 @@
+﻿@model ArmyExe2.Models.Response
+@{
+    ViewData["Title"] = "GetAllUsersHC";
+}
+@if (Model.listUser == null || Model.listUser.Count == 0)
+{
+    <p>No user details found.</p>
+}
+else
+{
+    <h1 style="padding: 20px;">List of all members</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Mobile Phone</th>
+                <th scope="col">Birth Date</th>
+                <th scope="col">Image</th>
+                <th scope="col">Positive For Corona Day</th>
+                <th scope="col">Recover From Corona Day</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.listUser)
+            {
+                <tr>
+                    <th scope="row">@user.Id</th>
+                    <td>@user.FullName</td>
+                    <td>@user.StreetAddress</td>
+                    <td>@user.Phone</td>
+                    <td>@user.MobilePhone</td>
+                    <td>@user.BirthDate</td>
+                    <td>
+                        <img src="@user.ImageData" class="member-image" style="width: 70px; height: 70px;" />
+                    </td>
+
+                    <td>@user.PositiveForCorona</td>
+                    <td>@user.RecoverFromCorona</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    }
